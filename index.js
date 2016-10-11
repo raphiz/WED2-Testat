@@ -1,7 +1,8 @@
 var express = require('express');
 var favicon = require('serve-favicon')
 var hbs = require('express-hbs');
-var indexRoutes = require('./routes/indexRoutes.js');
+var bodyParser = require('body-parser');
+var todoRoutes = require('./routes/todoRoutes.js');
 
 var app = express();
 
@@ -10,14 +11,15 @@ app.engine('hbs', hbs.express4());
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 
-
-// Register custom routers
-app.use("/", indexRoutes);
+// Middleware for handling form data
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Custom Middlewares for static folders and favicon
 app.use(express.static(__dirname + '/public'));
 app.use(favicon(__dirname + '/public/favicon.png'));
 
+// Register custom routers
+app.use("/", todoRoutes);
 
 // Serve the app
 const hostname = '127.0.0.1';
