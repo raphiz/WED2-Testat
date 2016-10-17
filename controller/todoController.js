@@ -1,14 +1,11 @@
+var todoService = require('../services/todoService.js');
+
 module.exports.tododialog = function(req, res)
 {
-    var id = req.params.id;
-    if (!id){
-        // New todo...
-        res.render("todo_details.hbs", {});
-    }else{
-        // TODO: load data for edit!
-        console.log("LOAD " + id);
-        res.render("todo_details.hbs", {});
-    }
+    todoService.getById(req.params.id, function(err, todo){
+        // TODO: handle error: todo is null if invalid ID is given!
+        res.render("todo_details.hbs", todo);
+    });
 };
 
 module.exports.create = function(req, res)
@@ -33,13 +30,27 @@ module.exports.create = function(req, res)
     raw.flash = 'Due Date must be a valid date';
     res.render("todo_details.hbs", raw);
   }else{
+
       // TODO: is there a better solution?
-      res.redirect(302, '/');
+      todo = {
+          title: raw.title,
+          importance: raw.importance,
+          duedate: raw.duedate,
+          description: raw.description,
+      }
+      todoService.insert(todo, function(err, todo){
+          res.redirect(302, '/');
+      })
   }
 };
 
 module.exports.listDialog = function(req, res)
 {
-    // TOOD: render list
-    res.render("todo_list.hbs", {'todos': [1,2,3]});
+    todoService.loadAll(function(err, todos){
+        if(err){
+            console.log(err);
+            // TODO: What now?
+        }
+        res.render("todo_list.hbs", {'todos': todos});
+    });
 };
