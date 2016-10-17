@@ -37,10 +37,10 @@ module.exports.create = function(req, res)
           importance: raw.importance,
           duedate: raw.duedate,
           description: raw.description,
-      }
+      };
       todoService.insert(todo, function(err, todo){
           res.redirect(302, '/');
-      })
+      });
   }
 };
 
