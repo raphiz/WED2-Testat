@@ -1,22 +1,17 @@
-<!-- TODO: Add header, doctype etc. -->
-
-{{#if error}}
-<div class="error">{{error}}</div>
-{{/if}}
+<h1>Neue Todo</h1>
 <form method="post">
+    <label for="todo-title">Titel</label>
+    <input type="text" id="todo-title" name="title" value="{{title}}" required/>
 
-<label for="todo-title">Titel</label>
-<input type="text" id="todo-title" name="title" value="{{title}}" required/>
+    <label for="todo-description">Beschreibung</label>
+    <textarea id="todo-description" name="description">{{description}}</textarea>
 
-<label for="todo-description">Beschreibung</label>
-<textarea id="todo-description" name="description">{{description}}</textarea>
+    <label for="todo-importance">Wichtigkeit</label>
+    <input type="number" name="importance" in="1" max="5" value="{{importance}}" required>
 
-<label for="todo-importance">Wichtigkeit</label>
-<input type="number" name="importance" in="1" max="5" value="{{importance}}" required>
+    <label for="todo-duedate">Erledigt bis</label>
+    <input type="date" name="duedate" id="todo-duedate" value="{{duedate}}" required/>
 
-<label for="todo-duedate">Erledigt bis</label>
-<input type="date" name="duedate" id="todo-duedate" value="{{duedate}}" required/>
-
-<button type="submit">Speichern</button>
-<a href="/" class="button">Abbruch</a>
+    <button type="submit">Speichern</button>
+    <a href="/" class="button">Abbruch</a>
 </form>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{title}}</title>
+        <link rel="stylesheet" href="/stylesheets/style.css">
+    </head>
+    <body>
+        {{#if flash}}
+        <div class="error">{{flash}}</div>
+        {{/if}}
+
+        <div class="wrap">
+            {{{body}}}
+        </div>
+    </body>
+</html>

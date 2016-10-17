@@ -21,16 +21,16 @@ module.exports.create = function(req, res)
   }
 
   if (typeof raw.title === "undefined" || raw.title.trim().length === 0){
-      raw.error = "No title set";
+      raw.flash = "No title set";
       res.render("todo_details.hbs", raw);
   }else if(typeof raw.importance === "undefined" ||
             parseInt(raw.importance) < 1 ||
             parseInt(raw.importance) > 5){
-      raw.error = "Importance must be set with a number between 1 and 5";
+      raw.flash = "Importance must be set with a number between 1 and 5";
       res.render("todo_details.hbs", raw);
   }else if(typeof raw.duedate === "undefined" ||
            !Date.parse(raw.duedate)){
-    raw.error = 'Due Date must be a valid date';
+    raw.flash = 'Due Date must be a valid date';
     res.render("todo_details.hbs", raw);
   }else{
       // TODO: is there a better solution?
@@ -41,5 +41,5 @@ module.exports.create = function(req, res)
 module.exports.listDialog = function(req, res)
 {
     // TOOD: render list
-    res.render("todo_list.hbs", {});
+    res.render("todo_list.hbs", {'todos': [1,2,3]});
 };
