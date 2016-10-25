@@ -16,6 +16,21 @@ button,
   color: black;
   text-align: center;
   font-family: "Open Sans", Arial, sans;
+}
+
+.create {
+  background-color: lightgray;
+  font-weight: bold;
+}
+
+.button:hover {
+  border: 1px solid black;
+
+}
+
+.button:active {
+  background-color: darkgray;
+  border: 1px solid black;
 
 }
 

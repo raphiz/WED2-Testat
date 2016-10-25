@@ -1,9 +1,17 @@
-<a href="/create/" class="button">Create new Note</a>
+<input type="button" class="button create" onclick="location.href='/create/';" value="Create new Note" />
+<input type="button" class="button sort" onclick="location.href='/config/set/sortByFinishDate';" value="By finish Date" />
+<input type="button" class="button sort" onclick="location.href='/config/set/sortByImportance';" value="By Importance" />
+<input type="button" class="button sort" onclick="location.href='/config/set/sortByCreateDate';" value="By created Date" />
+<input type="button" class="button sort" onclick="location.href='/config/set/toggleStype';" value="Style Switcher" />
+<input type="button" class="button sort" onclick="location.href='/config/set/hideCompleted';" value="Fertige verbergen" />
+
+
+<!-- <a href="/create/" class="button">Create new Note</a>
 <a href="/config/set/sortByFinishDate" class="button">By finish Date</a>
 <a href="/config/set/sortByImportance" class="button">By Importance</a>
 <a href="/config/set/sortByCreateDate" class="button">By created Date</a>
 <a href="/config/set/toggleStype" class="button">Style Switcher</a>
-<a href="/config/set/hideCompleted" class="button">Fertige verbergen</a>
+<a href="/config/set/hideCompleted" class="button">Fertige verbergen</a> -->
 
 
 {{#each todos}}
