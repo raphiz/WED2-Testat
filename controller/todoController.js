@@ -1,10 +1,10 @@
-var todoService = require('../services/todoService.js');
+var todoService = require('../services/todoService.js'); // Model
 
-module.exports.tododialog = function(req, res)
+module.exports.todoEditDialog = function(req, res)
 {
     todoService.getById(req.params.id, function(err, todo){
         // TODO: handle error: todo is null if invalid ID is given!
-        res.render("todo_details.hbs", todo);
+        res.render("todo_edit.hbs", todo);
     });
 };
 

@@ -6,8 +6,11 @@ body {
   font-size: 16px;
 }
 
-button,
-.button {
+/* Layout for the todoList
+********************************************************************/
+
+button, .button {
+  margin-bottom: 1em;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
@@ -18,32 +21,73 @@ button,
   font-family: "Open Sans", Arial, sans;
 }
 
-.create {
-  background-color: lightgray;
-  font-weight: bold;
-}
-
-.button:hover {
+button:hover , .button:hover {
   border: 1px solid black;
 
 }
 
-.button:active {
+button:active , .button:active {
   background-color: darkgray;
   border: 1px solid black;
 
 }
 
+.sort {
+  display: inline-block;
+}
+
+#btnCreate {
+  background-color: lightgray;
+  font-weight: bold;
+}
+
+.main {
+  width: 79%;
+  display: inline-block;
+}
+
+.options {
+  width: 20%;
+  display: inline-block;
+}
+
+.todoStatus {
+  width: 18%;
+  display: inline-block;
+}
+
+.todoDetails {
+  width: 81%;
+  display: inline-block;
+}
+
+.todoTitle {
+  display: inline-block;
+}
+
+.todoImportance {
+  display: inline-block;
+  float: right;
+}
+
+.todoDescription {
+  width: 100%;
+  /*height: 5em;*/
+}
+
+/* END Layout for the todoList*/
+
+
 
 /* Flexbox Form */
-form {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
+/*form {*/
+  /*display: flex;*/
+  /*flex-direction: row;*/
+  /*flex-wrap: wrap;*/
+/*}*/
 
-form > * {
-   flex: 1 100%;
-}
+/*form > * {*/
+   /*flex: 1 100%;*/
+/*}*/
 
 

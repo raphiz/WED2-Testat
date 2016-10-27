@@ -27,4 +27,4 @@ function getById(id, callback){
     });
 }
 
-module.exports = {loadAll:loadAll, insert:insert, update:update, getById:getById};
+module.exports = {loadAll:loadAll, insert:insert, update:update, getById:getById}; // definiert wir die Funktionen gegen aussen heissen

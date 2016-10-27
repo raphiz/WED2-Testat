@@ -1,6 +1,19 @@
-<div class="">
-    <div>Title: {{this.title}}</div>
-    <div>Desc: {{this.description}}</div>
-    <div>I: {{this.importance}}</div>
-    <div>Due:{{this.duedate}}</div>
-</div>
+<!--for each todo this is the layout-->
+<article>
+    <div class="main" xmlns="http://www.w3.org/1999/html">
+        <div class="todoStatus">
+            <p>Fertig: <input type="checkbox" id="chkErledigt" {{#if this.complete}}checked{{/if}}></p>
+            <p>{{#if this.complete}}{{else}}{{this.duedate}}{{/if}}</p>
+        </div>
+        <div class="todoDetails">
+            <div class="todoTitle">{{this.title}}</div>
+            <div class="todoImportance">{{this.importance}}</div>
+            <textarea class="todoDescription" rows="4" readonly>{{this.description}}</textarea>
+        </div>
+    </div>
+    <div class="options">
+        <form action="/edit={{this._id}}" method="get">
+            <button type="submit" id="btnEdit">Edit</button>
+        </form>
+    </div>
+</article>

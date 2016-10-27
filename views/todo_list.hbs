@@ -1,17 +1,27 @@
-<input type="button" class="button create" onclick="location.href='/create/';" value="Create new Note" />
-<input type="button" class="button sort" onclick="location.href='/config/set/sortByFinishDate';" value="By finish Date" />
-<input type="button" class="button sort" onclick="location.href='/config/set/sortByImportance';" value="By Importance" />
-<input type="button" class="button sort" onclick="location.href='/config/set/sortByCreateDate';" value="By created Date" />
-<input type="button" class="button sort" onclick="location.href='/config/set/toggleStype';" value="Style Switcher" />
-<input type="button" class="button sort" onclick="location.href='/config/set/hideCompleted';" value="Fertige verbergen" />
-
-
-<!-- <a href="/create/" class="button">Create new Note</a>
-<a href="/config/set/sortByFinishDate" class="button">By finish Date</a>
-<a href="/config/set/sortByImportance" class="button">By Importance</a>
-<a href="/config/set/sortByCreateDate" class="button">By created Date</a>
-<a href="/config/set/toggleStype" class="button">Style Switcher</a>
-<a href="/config/set/hideCompleted" class="button">Fertige verbergen</a> -->
+<nav>
+    <div class="main">
+        <form action="/create/" method="get">
+            <button type="submit" id="btnCreate">Create new Note</button>
+        </form>
+        <form action="/config/set/sortByFinishDate" method="get" class="sort">
+            <button type="submit" id="btnSortByFinish">By finish Date</button>
+        </form>
+        <form action="/config/set/sortByImportance" method="get" class="sort">
+            <button type="submit" id="btnSortByImportance">By Importance</button>
+        </form>
+        <form action="/config/set/sortByCreateDate"  method="get" class="sort">
+            <button type="submit" id="btnSortByDateCreated">By created Date</button>
+        </form>
+    </div>
+    <div class="options">
+        <form action="/config/set/toggleStype" method="get">
+            <button type="submit" id="btnStyleSwitcher">Style Switcher</button>
+        </form>
+        <form action="/config/set/hideCompleted" method="get">
+            <button type="submit" id="btnHideShowCompleted">Fertige verbergen</button>
+        </form>
+    </div>
+</nav>
 
 
 {{#each todos}}

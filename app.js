@@ -11,7 +11,7 @@ var app = express();
 // Use handlebars instead of JADE
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
-hbs.registerPartials(path.join(__dirname, '/views/partials'));
+hbs.registerPartials(path.join(__dirname, '/views/partials')); // handlebars layout for each todoo
 
 // Middleware for handling form data
 app.use(bodyParser.json());
