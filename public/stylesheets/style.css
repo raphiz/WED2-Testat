@@ -80,14 +80,17 @@ button:active , .button:active {
 
 
 /* Flexbox Form */
-/*form {*/
-  /*display: flex;*/
-  /*flex-direction: row;*/
-  /*flex-wrap: wrap;*/
+form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+form > * {
+   flex: 1 100%;
+}
+
+/* @media
+.buttoncontainer {*/
+  /*flex: 1 100%;*/
 /*}*/
-
-/*form > * {*/
-   /*flex: 1 100%;*/
-/*}*/
-
-

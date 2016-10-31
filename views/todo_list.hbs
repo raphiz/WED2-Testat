@@ -1,24 +1,36 @@
 <nav>
     <div class="main">
         <form action="/create/" method="get">
-            <button type="submit" id="btnCreate">Create new Note</button>
+            <div class="buttoncontainer">
+                <button type="submit" id="btnCreate">Create new Note</button>
+            </div>
         </form>
         <form action="/config/set/sortByFinishDate" method="get" class="sort">
-            <button type="submit" id="btnSortByFinish">By finish Date</button>
+            <div class="buttoncontainer">
+                <button type="submit" id="btnSortByFinish">By finish Date</button>
+            </div>
         </form>
         <form action="/config/set/sortByImportance" method="get" class="sort">
-            <button type="submit" id="btnSortByImportance">By Importance</button>
+            <div class="buttoncontainer">
+                <button type="submit" id="btnSortByImportance">By Importance</button>
+            </div>
         </form>
         <form action="/config/set/sortByCreateDate"  method="get" class="sort">
-            <button type="submit" id="btnSortByDateCreated">By created Date</button>
+            <div class="buttoncontainer">
+                <button type="submit" id="btnSortByDateCreated">By created Date</button>
+            </div>
         </form>
     </div>
     <div class="options">
         <form action="/config/set/toggleStype" method="get">
-            <button type="submit" id="btnStyleSwitcher">Style Switcher</button>
+            <div class="buttoncontainer">
+                <button type="submit" id="btnStyleSwitcher">Style Switcher</button>
+            </div>
         </form>
         <form action="/config/set/hideCompleted" method="get">
-            <button type="submit" id="btnHideShowCompleted">Fertige verbergen</button>
+            <div class="buttoncontainer">
+                <button type="submit" id="btnHideShowCompleted">Fertige verbergen</button>
+            </div>
         </form>
     </div>
 </nav>
