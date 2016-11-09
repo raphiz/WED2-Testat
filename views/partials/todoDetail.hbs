@@ -1,14 +1,14 @@
 <!--for each todo this is the layout-->
 <article>
     <div class="main" xmlns="http://www.w3.org/1999/html">
-        <div class="todoStatus">
-            <p>Fertig: <input type="checkbox" id="chkErledigt" {{#if this.complete}}checked{{/if}}></p>
-            <p>{{#if this.complete}}{{else}}{{this.duedate}}{{/if}}</p>
-        </div>
         <div class="todoDetails">
             <div class="todoTitle">{{this.title}}</div>
             <div class="todoImportance">{{this.importance}}</div>
             <textarea class="todoDescription" rows="4" readonly>{{this.description}}</textarea>
+        </div>
+        <div class="todoStatus">
+            <p>Fertig: <input type="checkbox" id="chkErledigt" {{#if this.complete}}checked{{/if}}></p>
+            <p>{{#if this.complete}}{{else}}{{this.duedate}}{{/if}}</p>
         </div>
     </div>
     <div class="options">

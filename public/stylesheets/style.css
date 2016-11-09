@@ -47,17 +47,17 @@ button:active , .button:active {
 }
 
 .options {
-  width: 20%;
-  display: inline-block;
+    width: 20%;
+    display: inline-block;
 }
 
 .todoStatus {
-  width: 18%;
+  width: 10%;
   display: inline-block;
 }
 
 .todoDetails {
-  width: 81%;
+  width: 89%;
   display: inline-block;
 }
 
@@ -72,12 +72,7 @@ button:active , .button:active {
 
 .todoDescription {
   width: 100%;
-  /*height: 5em;*/
 }
-
-/* END Layout for the todoList*/
-
-
 
 /* Flexbox Form */
 form {
@@ -90,7 +85,41 @@ form > * {
    flex: 1 100%;
 }
 
-/* @media
-.buttoncontainer {*/
-  /*flex: 1 100%;*/
-/*}*/
+@media(max-width: 961px) {
+    article {
+        display: flex;
+    }
+    article > .main > * {
+        display: inline-flex;
+        flex-flow: wrap;
+        width: 100%;
+    }
+
+    article .options {
+        width: 20%;
+        display: inline-flex;
+        align-items: center;
+    }
+}
+
+@media(max-width: 752px) {
+    .main, form {
+        display: flex;
+        flex-flow: wrap;
+        width: 100%;
+    }
+
+    .options, .buttoncontainer {
+        display: flex;
+        flex-flow: wrap;
+        width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .buttoncontainer * {
+        flex: 1 1 100%;
+    }
+}
+
+
+/* END Layout for the todoList*/
