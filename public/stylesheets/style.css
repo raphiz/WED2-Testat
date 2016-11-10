@@ -107,29 +107,33 @@ form > input, div, textarea {
 }
 
 @media(max-width: 752px) {
-    .main, form {
+    /*.main, form {*/
+        /*display: flex;*/
+        /*flex-flow: wrap;*/
+        /*flex: 1 100%;*/
+        /*width: 100%;*/
+    /*}*/
+
+    .wrap * {
         display: flex;
         flex-flow: wrap;
+        flex: 1 100%;
         width: 100%;
     }
 
-    form > label {
-        flex: 1 100%;
+    .todoTitle {
+        flex: 1 50%;
     }
 
-    form > input, div, textarea {
-        flex: 1 100%;
+    .todoImportance {
+        flex: 1 50%;
+        margin-left: auto;
     }
 
-    .options, .buttoncontainer {
-        display: flex;
-        flex-flow: wrap;
-        width: 100%;
-        flex: 1 1 100%;
-    }
-
-    .buttoncontainer * {
-        flex: 1 1 100%;
+    .todoImportance {
+        flex: 1 50%;
+        width:  50%;
+        margin-left: auto;
     }
 }
 
