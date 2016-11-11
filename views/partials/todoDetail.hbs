@@ -7,7 +7,7 @@
             <textarea class="todoDescription" rows="4" readonly>{{this.description}}</textarea>
         </div>
         <div class="todoStatus">
-            <p>Fertig: <input type="checkbox" id="chkErledigt" {{#if this.complete}}checked{{/if}}></p>
+            <p>Fertig: <input type="checkbox" name="complete" id="chkErledigt" {{#if this.complete}}checked{{/if}} disabled></p>
             <p>{{#if this.complete}}{{else}}{{this.duedate}}{{/if}}</p>
         </div>
     </div>

@@ -38,7 +38,7 @@ module.exports.create = function(req, res)
           duedate: raw.duedate,
           description: raw.description,
           created: Date.now(),
-          complete: false
+          complete: raw.complete
       };
       todoService.insert(todo, function(err, todo){
           module.exports.listDialog(req, res);
@@ -65,7 +65,7 @@ module.exports.update = function(req, res)
         importance: raw.importance,
         duedate: raw.duedate,
         description: raw.description,
-        complete: false
+        complete: raw.complete != undefined
     };
     todoService.update(req.params.id, todo, function(err, todo) {
         module.exports.listDialog(req, res);
