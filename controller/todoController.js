@@ -38,10 +38,10 @@ module.exports.create = function(req, res)
           duedate: raw.duedate,
           description: raw.description,
           created: Date.now(),
-          complete: false,
+          complete: false
       };
       todoService.insert(todo, function(err, todo){
-          res.redirect(302, '/');
+          module.exports.listDialog(req, res);
       });
   }
 };
@@ -54,5 +54,20 @@ module.exports.listDialog = function(req, res)
             // TODO: What now?
         }
         res.render("todo_list.hbs", {'todos': todos});
+    });
+};
+
+module.exports.update = function(req, res)
+{
+    var raw = req.body;
+    todo = {
+        title: raw.title,
+        importance: raw.importance,
+        duedate: raw.duedate,
+        description: raw.description,
+        complete: false
+    };
+    todoService.update(req.params.id, todo, function(err, todo) {
+        module.exports.listDialog(req, res);
     });
 };

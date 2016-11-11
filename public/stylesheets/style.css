@@ -107,13 +107,6 @@ form > input, div, textarea {
 }
 
 @media(max-width: 752px) {
-    /*.main, form {*/
-        /*display: flex;*/
-        /*flex-flow: wrap;*/
-        /*flex: 1 100%;*/
-        /*width: 100%;*/
-    /*}*/
-
     .wrap * {
         display: flex;
         flex-flow: wrap;

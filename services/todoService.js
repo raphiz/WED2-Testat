@@ -15,9 +15,8 @@ function insert(todo, callback){
 }
 
 function update(id, todo, callback){
-    db.update({_id: id}, todo, {}, function(err, numAffected, affectedDocuments){
-        // TODO: Handle out of bound!
-        callback(err, affectedDocuments[0]);
+    db.update({_id: id}, todo, {}, function (err, todo) {
+        callback(err, todo);
     });
 }
 
