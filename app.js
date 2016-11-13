@@ -3,6 +3,7 @@ var express = require('express');
 var favicon = require('serve-favicon');
 var hbs = require('hbs');
 var bodyParser = require('body-parser');
+var configMiddleware = require('./util/configMiddleware.js');
 
 var todoRoutes = require('./routes/todoRoutes.js');
 var configRoutes = require('./routes/configRoutes.js');
@@ -21,15 +22,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Custom Middlewares for static folders
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(function (req, res, next) {
-  // load config....
-  req.config = {}; 
-  next();
-});
+// Allways load config
+app.use(configMiddleware);
 
 // Register custom routers
 app.use("/", todoRoutes);
-app.use("/", configRoutes);
 
 // Register 404 handler
 app.use(function(req, res, next) {
