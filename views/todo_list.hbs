@@ -1,36 +1,18 @@
 <nav>
     <div class="main">
-        <form action="/create/" method="get">
-            <div class="buttoncontainer">
-                <button type="submit" id="btnCreate">Create new Note</button>
-            </div>
-        </form>
-        <form action="/config/set/sortByFinishDate" method="get" class="sort">
-            <div class="buttoncontainer">
-                <button type="submit" id="btnSortByFinish">By finish Date</button>
-            </div>
-        </form>
-        <form action="/config/set/sortByImportance" method="get" class="sort">
-            <div class="buttoncontainer">
-                <button type="submit" id="btnSortByImportance">By Importance</button>
-            </div>
-        </form>
-        <form action="/config/set/sortByCreateDate"  method="get" class="sort">
-            <div class="buttoncontainer">
-                <button type="submit" id="btnSortByDateCreated">By created Date</button>
-            </div>
+        <div class="buttoncontainer">
+        <a href="/create/" class="button btnCreate" >Create new Note</a>
+        </div>
+        <form method="post">
+            <button type="submit" id="btnSortByFinish" formaction="/config/set/sort/byFinishDate">By finish Date</button>
+            <button type="submit" id="btnSortByImportance" formaction="/config/set/sort/byImportance">By Importance</button>
+            <button type="submit" id="btnSortByDateCreated" formaction="/config/set/sort/byCreateDate">By created Date</button>
         </form>
     </div>
     <div class="options">
-        <form action="/config/set/toggleStype" method="get">
-            <div class="buttoncontainer">
-                <button type="submit" id="btnStyleSwitcher">Style Switcher</button>
-            </div>
-        </form>
-        <form action="/config/set/hideCompleted" method="get">
-            <div class="buttoncontainer">
-                <button type="submit" id="btnHideShowCompleted">Fertige verbergen</button>
-            </div>
+        <form method="post">
+            <button type="submit" id="btnStyleSwitcher" formaction="/config/set/toggleStyle">Style Switcher</button>
+            <button type="submit" id="btnHideShowCompleted" formaction="/config/set/hideCompleted">Fertige verbergen</button>
         </form>
     </div>
 </nav>

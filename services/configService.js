@@ -14,11 +14,19 @@ function get(key, callback) {
     });
 }
 
-function add(key, value, callback) {
-    db.insert({'key': key, 'value': value}, function (err, config) {
-        callback(err, config);
+function set(key, value, callback) {
+    get(key, function(err, config){
+        if(config){
+            db.update({ _id: config._id}, {'key': key, 'value': value}, function (err, config) {
+                callback(err, config);
+            });
+        }else{
+            db.insert({'key': key, 'value': value}, function (err, config) {
+                callback(err, config);
+            });
+        }
     });
 }
 
 
-module.exports = {get : get, add: add, all: all};
+module.exports = {get : get, set: set, all: all};

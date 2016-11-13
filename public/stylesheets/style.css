@@ -42,7 +42,7 @@ button:active , .button:active {
   display: inline-block;
 }
 
-#btnCreate {
+.btnCreate {
   background-color: lightgray;
   font-weight: bold;
 }

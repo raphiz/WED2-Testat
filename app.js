@@ -27,6 +27,7 @@ app.use(configMiddleware);
 
 // Register custom routers
 app.use("/", todoRoutes);
+app.use("/config/", configRoutes);
 
 // Register 404 handler
 app.use(function(req, res, next) {
