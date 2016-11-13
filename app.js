@@ -33,13 +33,10 @@ app.use(function(req, res, next) {
 
 // Prevent stacktrace leaking to user
 app.use(function(err, req, res, next) {
-    // Log the error
-    console.log(err.stack);
-
-    // Set response status to 500
+    if(err.status != 404){
+        console.log(err.stack);
+    }
     res.status(err.status || 500);
-    // Render error message
-
     res.render('error', {
         'error': {
           message: err.message,
@@ -48,7 +45,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
-// Serve the app
 const hostname = '127.0.0.1';
 const port = 3001;
 app.listen(port, hostname, () => {
