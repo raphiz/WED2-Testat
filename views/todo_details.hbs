@@ -17,7 +17,7 @@
     <input type="number" name="importance" in="1" max="5" value="{{importance}}" required>
 
     <label for="todo-duedate">Erledigt bis</label>
-    <input type="date" name="duedate" id="todo-duedate" value="{{duedate}}" required/>
+    <input type="date" name="duedate" id="todo-duedate" value="{{formatDate duedate}}" placeholder="YYYY-MM-DD" required/>
 
     {{#if this._id}}
     <label for="todo-status">Erledigt</label>

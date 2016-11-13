@@ -8,44 +8,54 @@ module.exports.todoEditDialog = function(req, res)
     });
 };
 
+function isValid(raw){
+    if(typeof raw.description === "undefined"){
+        raw.description = "";
+    }
+    if (typeof raw.title === "undefined" ||
+                raw.title.trim().length === 0) {
+        raw.flash = "No title set";
+        return false;
+    }else if(typeof raw.importance === "undefined" ||
+              parseInt(raw.importance) < 1 ||
+              parseInt(raw.importance) > 5){
+        raw.flash = "Importance must be set with a number between 1 and 5";
+        return false;
+
+    }else if(typeof raw.duedate === "undefined" ||
+                !Date.parse(raw.duedate)){
+        raw.flash = 'Due Date must be a valid date - eg. 2015-05-15';
+        return false;
+    }
+    return true;
+}
+
+function parseRawTodo(raw, isNew){
+    var todo = {
+        title: raw.title,
+        importance: raw.importance,
+        duedate: Date.parse(raw.duedate),
+        description: raw.description,
+        complete: raw.complete !== undefined
+    };
+    if(isNew){
+        todo.created = Date.now();
+    }
+    return todo;
+}
 module.exports.create = function(req, res)
 {
   if(req.method === 'POST'){
-       var raw = req.body;
-
-      // Set Optional fields:
-      if(typeof raw.description === "undefined"){
-          raw.description = "";
-      }
-
-      if (typeof raw.title === "undefined" || raw.title.trim().length === 0){
-          raw.flash = "No title set";
-          res.render("todo_details.hbs", raw);
-      }else if(typeof raw.importance === "undefined" ||
-                parseInt(raw.importance) < 1 ||
-                parseInt(raw.importance) > 5){
-          raw.flash = "Importance must be set with a number between 1 and 5";
-          res.render("todo_details.hbs", raw);
-      }else if(typeof raw.duedate === "undefined" ||
-               !Date.parse(raw.duedate)){
-        raw.flash = 'Due Date must be a valid date - eg. 2015/03/25';
-        res.render("todo_details.hbs", raw);
-      }else{
-          // TODO: is there a better solution?
-          todo = {
-              title: raw.title,
-              importance: raw.importance,
-              duedate: raw.duedate,
-              description: raw.description,
-              created: Date.now(),
-              complete: raw.complete
-          };
+      var raw = req.body;
+      if(isValid(raw)){
+          todo = parseRawTodo(raw, true);
           todoService.insert(todo, function(err, todo){
                res.redirect('/');
           });
+      }else{
+          res.render("todo_details.hbs", raw);
       }
-  }
-  else{
+  }else{
       res.render("todo_details.hbs");
   }
 };
@@ -67,14 +77,10 @@ module.exports.listDialog = function(req, res)
 module.exports.update = function(req, res)
 {
     var raw = req.body;
-    todo = {
-        title: raw.title,
-        importance: raw.importance,
-        duedate: raw.duedate,
-        description: raw.description,
-        complete: raw.complete !== undefined
-    };
-    todoService.update(req.params.id, todo, function(err, todo) {
-        res.redirect('/');
-    });
+    if(isValid(raw)){
+        todo = parseRawTodo(raw, false);
+        todoService.update(req.params.id, {$set: todo}, function(err, todo) {
+            res.redirect('/');
+        });
+    }
 };

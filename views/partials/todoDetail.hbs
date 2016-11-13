@@ -8,7 +8,7 @@
         </div>
         <div class="todoStatus">
             <p>Fertig: <input type="checkbox" name="complete" id="chkErledigt" {{#if this.complete}}checked{{/if}} disabled></p>
-            <p>{{#if this.complete}}{{else}}{{this.duedate}}{{/if}}</p>
+            <p>{{#if this.complete}}{{else}}{{formatDate this.duedate}}{{/if}}</p>
         </div>
     </div>
     <div class="options">

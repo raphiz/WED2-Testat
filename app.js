@@ -7,6 +7,7 @@ var configMiddleware = require('./util/configMiddleware.js');
 
 var todoRoutes = require('./routes/todoRoutes.js');
 var configRoutes = require('./routes/configRoutes.js');
+var hbsUtils = require('./util/handlebarsUtils.js');
 
 var app = express();
 
@@ -14,10 +15,8 @@ var app = express();
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 hbs.registerPartials(path.join(__dirname, '/views/partials')); // handlebars layout for each todoo
-hbs.registerHelper('ifeq', function(a, b, opts) {
-    if (a === b) return opts.fn(this);
-    return opts.inverse(this);
-});
+hbs.registerHelper('ifeq', hbsUtils.ifeqHelper);
+hbs.registerHelper('formatDate', hbsUtils.formatDateHelper);
 
 // Middleware for handling form data
 app.use(bodyParser.json());
