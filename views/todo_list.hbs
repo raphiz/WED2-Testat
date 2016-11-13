@@ -4,9 +4,9 @@
         <a href="/create/" class="button btnCreate" >Create new Note</a>
         </div>
         <form method="post">
-            <button type="submit" id="btnSortByFinish" formaction="/config/set/sort/byFinishDate">By finish Date</button>
-            <button type="submit" id="btnSortByImportance" formaction="/config/set/sort/byImportance">By Importance</button>
-            <button type="submit" id="btnSortByDateCreated" formaction="/config/set/sort/byCreateDate">By created Date</button>
+            <button type="submit" id="btnSortByFinish" formaction="/config/set/sort/byFinishDate" {{#ifeq config.sortBy 'byFinishDate'}}class="active"{{/ifeq}}>By finish Date</button>
+            <button type="submit" id="btnSortByImportance" formaction="/config/set/sort/byImportance" {{#ifeq config.sortBy 'byImportance'}}class="active"{{/ifeq}}>By Importance</button>
+            <button type="submit" id="btnSortByDateCreated" formaction="/config/set/sort/byCreateDate" {{#ifeq config.sortBy 'byCreateDate'}}class="active"{{/ifeq}}>By created Date</button>
         </form>
     </div>
     <div class="options">
