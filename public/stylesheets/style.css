@@ -6,6 +6,12 @@ body {
   font-size: 16px;
 }
 
+.error{
+    background-color: rgb(250, 238, 233);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
 /* Layout for the todoList
 ********************************************************************/
 
@@ -129,6 +135,5 @@ form > input, div, textarea {
         margin-left: auto;
     }
 }
-
 
 /* END Layout for the todoList*/

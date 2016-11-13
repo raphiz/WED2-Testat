@@ -10,38 +10,43 @@ module.exports.todoEditDialog = function(req, res)
 
 module.exports.create = function(req, res)
 {
-  var raw = req.body;
+  if(req.method === 'POST'){
+       var raw = req.body;
 
-  // Set Optional fields:
-  if(typeof raw.description === "undefined"){
-      raw.description = "";
+      // Set Optional fields:
+      if(typeof raw.description === "undefined"){
+          raw.description = "";
+      }
+
+      if (typeof raw.title === "undefined" || raw.title.trim().length === 0){
+          raw.flash = "No title set";
+          res.render("todo_details.hbs", raw);
+      }else if(typeof raw.importance === "undefined" ||
+                parseInt(raw.importance) < 1 ||
+                parseInt(raw.importance) > 5){
+          raw.flash = "Importance must be set with a number between 1 and 5";
+          res.render("todo_details.hbs", raw);
+      }else if(typeof raw.duedate === "undefined" ||
+               !Date.parse(raw.duedate)){
+        raw.flash = 'Due Date must be a valid date - eg. 2015/03/25';
+        res.render("todo_details.hbs", raw);
+      }else{
+          // TODO: is there a better solution?
+          todo = {
+              title: raw.title,
+              importance: raw.importance,
+              duedate: raw.duedate,
+              description: raw.description,
+              created: Date.now(),
+              complete: raw.complete
+          };
+          todoService.insert(todo, function(err, todo){
+               res.redirect('/');
+          });
+      }
   }
-
-  if (typeof raw.title === "undefined" || raw.title.trim().length === 0){
-      raw.flash = "No title set";
-      res.render("todo_details.hbs", raw);
-  }else if(typeof raw.importance === "undefined" ||
-            parseInt(raw.importance) < 1 ||
-            parseInt(raw.importance) > 5){
-      raw.flash = "Importance must be set with a number between 1 and 5";
-      res.render("todo_details.hbs", raw);
-  }else if(typeof raw.duedate === "undefined" ||
-           !Date.parse(raw.duedate)){
-    raw.flash = 'Due Date must be a valid date';
-    res.render("todo_details.hbs", raw);
-  }else{
-      // TODO: is there a better solution?
-      todo = {
-          title: raw.title,
-          importance: raw.importance,
-          duedate: raw.duedate,
-          description: raw.description,
-          created: Date.now(),
-          complete: raw.complete
-      };
-      todoService.insert(todo, function(err, todo){
-           res.redirect('/');
-      });
+  else{
+      res.render("todo_details.hbs");
   }
 };
 

@@ -3,6 +3,9 @@
 {{else}}
 <h1>Create Todo</h1>
 {{/if}}
+{{#if flash}}
+<div class="error">{{flash}}</div>
+{{/if}}
 <form method="post">
     <label for="todo-title">Titel</label>
     <input type="text" id="todo-title" name="title" value="{{title}}" required/>
