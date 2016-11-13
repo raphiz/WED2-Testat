@@ -4,7 +4,7 @@ module.exports.todoEditDialog = function(req, res)
 {
     todoService.getById(req.params.id, function(err, todo){
         // TODO: handle error: todo is null if invalid ID is given!
-        res.render("todo_edit.hbs", todo);
+        res.render("todo_details.hbs", todo);
     });
 };
 
@@ -30,7 +30,6 @@ module.exports.create = function(req, res)
     raw.flash = 'Due Date must be a valid date';
     res.render("todo_details.hbs", raw);
   }else{
-
       // TODO: is there a better solution?
       todo = {
           title: raw.title,
@@ -41,7 +40,7 @@ module.exports.create = function(req, res)
           complete: raw.complete
       };
       todoService.insert(todo, function(err, todo){
-          module.exports.listDialog(req, res);
+           res.redirect('/');
       });
   }
 };
@@ -65,9 +64,9 @@ module.exports.update = function(req, res)
         importance: raw.importance,
         duedate: raw.duedate,
         description: raw.description,
-        complete: raw.complete != undefined
+        complete: raw.complete !== undefined
     };
     todoService.update(req.params.id, todo, function(err, todo) {
-        module.exports.listDialog(req, res);
+        res.redirect('/');
     });
 };

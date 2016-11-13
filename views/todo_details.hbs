@@ -1,5 +1,9 @@
-<h1>Neue Todo</h1>
-<form method="post" action="/">
+{{#if this._id}}
+<h1>Edit Todo</h1>
+{{else}}
+<h1>Create Todo</h1>
+{{/if}}
+<form method="post">
     <label for="todo-title">Titel</label>
     <input type="text" id="todo-title" name="title" value="{{title}}" required/>
 
@@ -12,6 +16,10 @@
     <label for="todo-duedate">Erledigt bis</label>
     <input type="date" name="duedate" id="todo-duedate" value="{{duedate}}" required/>
 
+    {{#if this._id}}
+    <label for="todo-status">Erledigt</label>
+    <input type="checkbox" name="complete" id="todo-status" {{#if this.complete}}checked{{/if}} />
+    {{/if}}
     <div class="buttoncontainer">
         <button type="submit" class="button">Speichern</button>
         <a href="/" class="button">Abbruch</a>
