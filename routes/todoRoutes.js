@@ -5,8 +5,8 @@ var router = express.Router();
 
 router.get("/", todoController.listDialog);
 router.post("/", todoController.create);
-router.get("/:id", todoController.todoEditDialog);
-router.post("/:id", todoController.update);
+router.get("edit/:id", todoController.todoEditDialog);
+router.post("edit/:id", todoController.update);
 router.get("/create", todoController.create);
 
 module.exports = router;

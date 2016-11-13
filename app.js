@@ -5,6 +5,7 @@ var hbs = require('hbs');
 var bodyParser = require('body-parser');
 
 var todoRoutes = require('./routes/todoRoutes.js');
+var configRoutes = require('./routes/configRoutes.js');
 
 var app = express();
 
@@ -17,12 +18,18 @@ hbs.registerPartials(path.join(__dirname, '/views/partials')); // handlebars lay
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-// Custom Middlewares for static folders and favicon
+// Custom Middlewares for static folders
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function (req, res, next) {
+  // load config....
+  req.config = {}; 
+  next();
+});
 
 // Register custom routers
 app.use("/", todoRoutes);
+app.use("/", configRoutes);
 
 // Register 404 handler
 app.use(function(req, res, next) {
