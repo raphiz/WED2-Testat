@@ -17,12 +17,12 @@ function get(key, callback) {
 function set(key, value, callback) {
     get(key, function(err, config){
         if(config){
-            db.update({ _id: config._id}, {'key': key, 'value': value}, function (err, config) {
-                callback(err, config);
+            db.update({ 'key': key}, {'key': key, 'value': value}, function (err, numReplaced) {
+                callback(err);
             });
         }else{
             db.insert({'key': key, 'value': value}, function (err, config) {
-                callback(err, config);
+                callback(err);
             });
         }
     });

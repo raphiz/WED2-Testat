@@ -4,15 +4,15 @@
         <a href="/create/" class="button btnCreate" >Create new Note</a>
         </div>
         <form method="post">
-            <button type="submit" id="btnSortByFinish" formaction="/config/set/sort/byFinishDate" {{#ifeq config.sortBy 'byFinishDate'}}class="active"{{/ifeq}}>By finish Date</button>
-            <button type="submit" id="btnSortByImportance" formaction="/config/set/sort/byImportance" {{#ifeq config.sortBy 'byImportance'}}class="active"{{/ifeq}}>By Importance</button>
-            <button type="submit" id="btnSortByDateCreated" formaction="/config/set/sort/byCreateDate" {{#ifeq config.sortBy 'byCreateDate'}}class="active"{{/ifeq}}>By created Date</button>
+            <button type="submit" id="btnSortByFinish" formaction="/config/set/sort/duedate" {{#ifeq config.sortBy 'duedate'}}class="active"{{/ifeq}}>By finish Date</button>
+            <button type="submit" id="btnSortByImportance" formaction="/config/set/sort/importance" {{#ifeq config.sortBy 'importance'}}class="active"{{/ifeq}}>By Importance</button>
+            <button type="submit" id="btnSortByDateCreated" formaction="/config/set/sort/created" {{#ifeq config.sortBy 'created'}}class="active"{{/ifeq}}>By created Date</button>
         </form>
     </div>
     <div class="options">
         <form method="post">
             <button type="submit" id="btnStyleSwitcher" formaction="/config/set/toggleStyle">Style Switcher</button>
-            <button type="submit" id="btnHideShowCompleted" formaction="/config/set/hideCompleted">Fertige verbergen</button>
+            <button type="submit" id="btnHideShowCompleted" formaction="/config/set/toggleHideComplete">Fertige {{#if config.hideComplete}}anzeigen{{else}}verbergen{{/if}}</button>
         </form>
     </div>
 </nav>

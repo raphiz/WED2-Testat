@@ -2,8 +2,17 @@ var Datastore = require('nedb');
 
 var db = new Datastore({ filename: './data/todos.db', autoload: true });
 
-function loadAll(callback){
-    db.find({}, function(err, todos){
+function loadAll(sortBy, direction, hideComplete, callback){
+    var query = {};
+    if(hideComplete){
+        query = {complete: false};
+    }
+
+    query = db.find(query);
+    if(sortBy !== undefined){
+        query = query.sort({[sortBy] : direction == 'asc'? 1 : -1});
+    }
+    query.exec(function(err, todos){
         callback(err, todos);
     });
 }

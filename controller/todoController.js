@@ -1,4 +1,4 @@
-var todoService = require('../services/todoService.js'); // Model
+var todoService = require('../services/todoService.js');
 
 module.exports.todoEditDialog = function(req, res)
 {
@@ -52,7 +52,10 @@ module.exports.create = function(req, res)
 
 module.exports.listDialog = function(req, res)
 {
-    todoService.loadAll(function(err, todos){
+    var sortBy = res.locals.config.sortBy || undefined;
+    var direction = res.locals.config.sortDirection || 'asc';
+    var hideComplete = res.locals.config.hideComplete || false;
+    todoService.loadAll(sortBy, direction, hideComplete, function(err, todos){
         if(err){
             console.log(err);
             // TODO: What now?
