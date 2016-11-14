@@ -1,6 +1,5 @@
 var path = require('path');
 var express = require('express');
-var favicon = require('serve-favicon');
 var hbs = require('hbs');
 var bodyParser = require('body-parser');
 var configMiddleware = require('./util/configMiddleware.js');

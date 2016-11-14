@@ -12,8 +12,6 @@ module.exports.setSortBy = function(req, res) {
         if(newSortBy == currentSortBy){
             newDirection = currentDirection === 'asc' ? 'desc': 'asc';
         }
-
-        // TODO: only update what's neccessary!
         configService.set('sortBy', newSortBy, function(err){
             configService.set('sortDirection', newDirection, function(err){
                 res.redirect('/');

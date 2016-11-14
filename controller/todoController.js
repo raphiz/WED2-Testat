@@ -1,14 +1,17 @@
 var todoService = require('../services/todoService.js');
 
-module.exports.todoEditDialog = function(req, res)
+module.exports.todoEditDialog = function(req, res, next)
 {
     todoService.getById(req.params.id, function(err, todo){
-        // TODO: handle error: todo is null if invalid ID is given!
-        res.render("todo_details.hbs", todo);
+        if (todo){
+            res.render("todo_details.hbs", todo);
+        }else{
+            next(err);
+        }
     });
 };
 
-function isValid(raw){
+function isValidTodo(raw){
     if(typeof raw.description === "undefined"){
         raw.description = "";
     }
@@ -43,11 +46,12 @@ function parseRawTodo(raw, isNew){
     }
     return todo;
 }
+
 module.exports.create = function(req, res)
 {
   if(req.method === 'POST'){
       var raw = req.body;
-      if(isValid(raw)){
+      if(isValidTodo(raw)){
           todo = parseRawTodo(raw, true);
           todoService.insert(todo, function(err, todo){
                res.redirect('/');
@@ -66,10 +70,6 @@ module.exports.listDialog = function(req, res)
     var direction = res.locals.config.sortDirection || 'asc';
     var hideComplete = res.locals.config.hideComplete || false;
     todoService.loadAll(sortBy, direction, hideComplete, function(err, todos){
-        if(err){
-            console.log(err);
-            // TODO: What now?
-        }
         res.render("todo_list.hbs", {'todos': todos});
     });
 };
@@ -77,7 +77,7 @@ module.exports.listDialog = function(req, res)
 module.exports.update = function(req, res)
 {
     var raw = req.body;
-    if(isValid(raw)){
+    if(isValidTodo(raw)){
         todo = parseRawTodo(raw, false);
         todoService.update(req.params.id, {$set: todo}, function(err, todo) {
             res.redirect('/');
