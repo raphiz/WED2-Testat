@@ -10,7 +10,9 @@ module.exports.formatDateHelper = function(date, opts) {
         }else if (typeof(date) == 'string') {
             return date;
         }
-        return date.getFullYear() + '-' + (date.getMonth() + 1)  + '-' + date.getDate();
+        return date.getFullYear() +
+               ((date.getMonth() >= 9) ? '-' : '-0') + (date.getMonth() + 1)  +
+               ((date.getDate() > 9) ? '-' : '-0') + date.getDate();
     }
     return "";
 };
