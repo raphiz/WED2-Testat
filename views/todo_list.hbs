@@ -1,8 +1,6 @@
 <nav>
     <div class="main">
-        <div class="buttoncontainer">
         <a href="/create/" class="button btnCreate" >Create new Note</a>
-        </div>
         <form method="post">
             <button type="submit" id="btnSortByFinish" formaction="/config/set/sort/duedate" {{#ifeq config.sortBy 'duedate'}}class="active"{{/ifeq}}>By finish Date</button>
             <button type="submit" id="btnSortByImportance" formaction="/config/set/sort/importance" {{#ifeq config.sortBy 'importance'}}class="active"{{/ifeq}}>By Importance</button>

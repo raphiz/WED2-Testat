@@ -6,7 +6,7 @@
 {{#if flash}}
 <div class="error">{{flash}}</div>
 {{/if}}
-<form method="post">
+<form method="post" id="todoDetails">
     <label for="todo-title">Titel</label>
     <input type="text" id="todo-title" name="title" value="{{title}}" required/>
 
@@ -20,8 +20,10 @@
     <input type="date" name="duedate" id="todo-duedate" value="{{formatDate duedate}}" placeholder="YYYY-MM-DD" required/>
 
     {{#if this._id}}
-    <label for="todo-status">Erledigt</label>
-    <input type="checkbox" name="complete" id="todo-status" {{#if this.complete}}checked{{/if}} />
+    <div class="todoStatus">
+        <label for="todo-status">Erledigt</label>
+        <input type="checkbox" name="complete" id="todo-status" {{#if this.complete}}checked{{/if}} />
+    </div>
     {{/if}}
     <div class="buttoncontainer">
         <button type="submit" class="button">Speichern</button>

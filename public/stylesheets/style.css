@@ -21,15 +21,16 @@ body {
 ********************************************************************/
 
 button, .button {
-  margin-bottom: 1em;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  color: black;
-  text-align: center;
-  font-family: "Open Sans", Arial, sans;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    font-family: "Open Sans", Arial, sans;
 }
 
 button:hover , .button:hover {
@@ -50,6 +51,7 @@ button:active , .button:active, button.active {
 .btnCreate {
   background-color: lightgray;
   font-weight: bold;
+    display: inline-block;
 }
 
 .main {
@@ -59,7 +61,7 @@ button:active , .button:active, button.active {
 
 .options {
     width: 20%;
-    display: inline-block;
+    display: inline-flex;
 }
 
 .todoStatus {
@@ -73,7 +75,8 @@ button:active , .button:active, button.active {
 }
 
 .todoTitle {
-  display: inline-block;
+    display: inline-block;
+    font-weight: bold;
 }
 
 .todoImportance {
@@ -88,36 +91,30 @@ button:active , .button:active, button.active {
 /* Flexbox Form */
 form {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: wrap;
 }
 
-form > label {
-    flex: 1 20%;
+#todoDetails > * {
+    flex: 1 100%;
 }
 
-form > input, div, textarea {
-    flex: 1 80%;
+#btnEdit {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 3em;
+    padding-right: 3em;
 }
 
-@media(max-width: 961px) {
+
+/* @media
+**********************************/
+@media(max-width: 777px) {
     article {
+        margin-top: 1.5em;
         display: flex;
+        border-bottom: solid grey 1px;
     }
-    article > .main > * {
-        display: inline-flex;
-        flex-flow: wrap;
-        width: 100%;
-    }
-
-    article .options {
-        width: 20%;
-        display: inline-flex;
-        align-items: center;
-    }
-}
-
-@media(max-width: 752px) {
     .wrap * {
         display: flex;
         flex-flow: wrap;
@@ -131,13 +128,29 @@ form > input, div, textarea {
 
     .todoImportance {
         flex: 1 50%;
-        margin-left: auto;
+        margin: 0 0 0 0;
+        text-align: right;
+        display: block;
     }
 
-    .todoImportance {
-        flex: 1 50%;
-        width:  50%;
-        margin-left: auto;
+    button, .button {
+        margin-right: 0;
+        display: block;
+        text-align: center;
+    }
+
+    div .todoStatus {
+        display: inline-flex;
+    }
+
+    div .todoStatus input {
+        align-items: left;
+    }
+
+    div .todoStatus > * {
+        flex: 1 30%;
+        margin: 0;
+        display: inline-flex;
     }
 }
 
