@@ -14,7 +14,7 @@
     <textarea id="todo-description" name="description">{{description}}</textarea>
 
     <label for="todo-importance">Wichtigkeit</label>
-    <input type="number" name="importance" in="1" max="5" value="{{importance}}" required>
+    <input type="number" name="importance" min="1" max="5" value="{{importance}}" required>
 
     <label for="todo-duedate">Erledigt bis</label>
     <input type="date" name="duedate" id="todo-duedate" value="{{formatDate duedate}}" placeholder="YYYY-MM-DD" required/>
