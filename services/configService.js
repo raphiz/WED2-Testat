@@ -2,26 +2,26 @@ var Datastore = require('nedb');
 
 var db = new Datastore({ filename: './data/config.db', autoload: true });
 
-function all(callback) {
-    db.find({}, function (err, config) {
+function all(sessionID, callback) {
+    db.find({sessionID : sessionID}, function (err, config) {
         callback(err, config);
     });
 }
 
-function get(key, callback) {
-    db.findOne({ key: key }, function (err, config) {
+function get(sessionID, key, callback) {
+    db.findOne({ key: key, sessionID : sessionID }, function (err, config) {
         callback(err, config);
     });
 }
 
-function set(key, value, callback) {
-    get(key, function(err, config){
+function set(sessionID, key, value, callback) {
+    get(sessionID, key, function(err, config){
         if(config){
-            db.update({ 'key': key}, {'key': key, 'value': value}, function (err, numReplaced) {
+            db.update({'sessionID' : sessionID, 'key': key}, {'sessionID' : sessionID, 'key': key, 'value': value}, function (err, numReplaced) {
                 callback(err);
             });
         }else{
-            db.insert({'key': key, 'value': value}, function (err, config) {
+            db.insert({'sessionID' : sessionID, 'key': key, 'value': value}, function (err, config) {
                 callback(err);
             });
         }

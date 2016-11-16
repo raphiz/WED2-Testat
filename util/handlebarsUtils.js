@@ -15,13 +15,20 @@ module.exports.printStars = function(a, opts) {
 };
 
 module.exports.formatDateHelper = function(date, opts) {
+    var withMoment = opts.hash.moment || false;
     if(date){
         if(typeof(date) === 'number'){
             date = new Date(date);
         }else if (typeof(date) == 'string') {
             return date;
         }
-        return moment(date, "YYYYMMDD").fromNow();
+        if(withMoment){
+            return moment(date, "YYYYMMDD").fromNow();
+        }else {
+            return date.getFullYear() +
+                   ((date.getMonth() >= 9) ? '-' : '-0') + (date.getMonth() + 1)  +
+                   ((date.getDate() > 9) ? '-' : '-0') + date.getDate();
+        }
     }
     return "";
 };

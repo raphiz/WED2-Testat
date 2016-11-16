@@ -2,12 +2,12 @@
     <div class="main" xmlns="http://www.w3.org/1999/html">
         <div class="todoDetails">
             <div class="todoTitle">{{this.title}}</div>
-            <p class="todoImportance">{{#printStars this.importance}}{{/printStars}}</p>
+            <p class="todoImportance">{{printStars this.importance}}</p>
             <textarea class="todoDescription" rows="4" readonly>{{this.description}}</textarea>
         </div>
         <div class="todoStatus">
             <p>Fertig:</p><input type="checkbox" name="complete" id="chkErledigt" {{#if this.complete}}checked{{/if}} disabled />
-            <date>{{#if this.complete}}{{else}}{{formatDate this.duedate}}{{/if}}</date>
+            <date>{{#if this.complete}}{{else}}{{formatDate this.duedate moment=true}}{{/if}}</date>
         </div>
     </div>
     <div class="options">

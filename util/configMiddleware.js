@@ -1,7 +1,7 @@
 var configService = require('../services/configService.js');
 
 module.exports = function (req, res, next) {
-    configService.all(function(err, config){
+    configService.all(req.sessionID, function(err, config){
       if (!err){
           // Map list to a single config object
           configuration = {};

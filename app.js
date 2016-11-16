@@ -3,6 +3,8 @@ var express = require('express');
 var hbs = require('hbs');
 var bodyParser = require('body-parser');
 var configMiddleware = require('./util/configMiddleware.js');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 
 var todoRoutes = require('./routes/todoRoutes.js');
 var configRoutes = require('./routes/configRoutes.js');
@@ -17,6 +19,13 @@ hbs.registerPartials(path.join(__dirname, '/views/partials')); // handlebars lay
 hbs.registerHelper('ifeq', hbsUtils.ifeqHelper);
 hbs.registerHelper('formatDate', hbsUtils.formatDateHelper);
 hbs.registerHelper('printStars', hbsUtils.printStars);
+
+app.use(cookieParser());
+app.use(session({
+    secret: 'abcdefg',
+    resave: false,
+    saveUninitialized: true
+}));
 
 
 // Middleware for handling form data

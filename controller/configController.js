@@ -12,8 +12,8 @@ module.exports.setSortBy = function(req, res) {
         if(newSortBy == currentSortBy){
             newDirection = currentDirection === 'asc' ? 'desc': 'asc';
         }
-        configService.set('sortBy', newSortBy, function(err){
-            configService.set('sortDirection', newDirection, function(err){
+        configService.set(req.sessionID, 'sortBy', newSortBy, function(err){
+            configService.set(req.sessionID, 'sortDirection', newDirection, function(err){
                 res.redirect('/');
             });
         });
@@ -24,14 +24,14 @@ module.exports.setSortBy = function(req, res) {
 
 module.exports.toggleHideComplete = function(req, res){
     var current = res.locals.config.hideComplete || false;
-    configService.set('hideComplete', !current, function(err){
+    configService.set(req.sessionID, 'hideComplete', !current, function(err){
         res.redirect('/');
     });
 };
 
 module.exports.toggleStyle = function(req, res){
     var current = res.locals.config.darkStyle || false;
-    configService.set('darkStyle', !current, function(err){
+    configService.set(req.sessionID, 'darkStyle', !current, function(err){
         res.redirect('/');
     });
 };
