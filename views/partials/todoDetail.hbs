@@ -2,7 +2,7 @@
     <div class="main" xmlns="http://www.w3.org/1999/html">
         <div class="todoDetails">
             <div class="todoTitle">{{this.title}}</div>
-            <p class="todoImportance">{{this.importance}}</p>
+            <p class="todoImportance">{{#printStars this.importance}}{{/printStars}}</p>
             <textarea class="todoDescription" rows="4" readonly>{{this.description}}</textarea>
         </div>
         <div class="todoStatus">

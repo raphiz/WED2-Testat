@@ -16,6 +16,8 @@ app.set('views', path.join(__dirname, 'views'));
 hbs.registerPartials(path.join(__dirname, '/views/partials')); // handlebars layout for each todoo
 hbs.registerHelper('ifeq', hbsUtils.ifeqHelper);
 hbs.registerHelper('formatDate', hbsUtils.formatDateHelper);
+hbs.registerHelper('printStars', hbsUtils.printStars);
+
 
 // Middleware for handling form data
 app.use(bodyParser.json());
