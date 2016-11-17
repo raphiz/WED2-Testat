@@ -65,8 +65,13 @@ button:active , .button:active, button.active {
 }
 
 .todoStatus {
-  width: 10%;
-  display: inline-block;
+    width: 10%;
+    display: inline-flex;
+}
+
+.todoStatus p, input {
+    flex: 1 50%;
+    display: inline-flex;
 }
 
 .todoDetails {
@@ -88,6 +93,17 @@ button:active , .button:active, button.active {
   width: 100%;
 }
 
+.buttoncontainer {
+    margin-top: 0.5em;
+    display: flex;
+    align-items: center;
+}
+
+.buttoncontainer {
+    display: flex;
+    align-items: center;
+}
+
 /* Flexbox Form */
 form {
   display: flex;
@@ -107,51 +123,146 @@ form {
 }
 
 
-/* @media
-**********************************/
+/* @media      ***********************************
+**************************************************/
+
 @media(max-width: 777px) {
-    article {
-        margin-top: 1.5em;
+
+    /*Start Navigation***********************/
+
+    nav {
         display: flex;
-        border-bottom: solid grey 1px;
+        flex-flow: row wrap;
     }
-    .wrap * {
+
+    nav .main {
         display: flex;
-        flex-flow: wrap;
+        flex-flow: row wrap;
         flex: 1 100%;
-        width: 100%;
+    }
+
+    nav a {
+        display: flex;
+        flex-flow: row wrap;
+        flex: 1 100%;
+    }
+
+    nav .main form  {
+        display: flex;
+        flex-flow: row wrap;
+        flex: 1 100%;
+    }
+
+    nav .main form button {
+        display: flex;
+        flex-flow: row wrap;
+        flex: 1 100%;
+    }
+
+    nav .options {
+        display: flex;
+        flex-flow: row wrap;
+        flex: 1 100%;
+    }
+
+    nav .options form {
+        display: flex;
+        flex-flow: row wrap;
+        flex: 1 100%;
+    }
+
+    nav .options form button {
+        display: flex;
+        flex-flow: row wrap;
+        flex: 1 100%;
+    }
+    /*End Navigation ***********************/
+
+    /*Start Article ***********************/
+    article {
+        display: flex;
+        flex-flow: row wrap;
+        flex: 1 100%;
+    }
+
+    article .main {
+        display: flex;
+        flex-flow: row wrap;
+        flex: 1 100%;
+    }
+
+    .todoDetails {
+        flex: 1 100%;
+        display: flex;
+        flex-flow: row wrap;
     }
 
     .todoTitle {
-        flex: 1 50%;
+        display: flex;
     }
 
     .todoImportance {
-        flex: 1 50%;
-        margin: 0 0 0 0;
-        text-align: right;
-        display: block;
+        display: flex;
+        margin: 0 0 0 auto;
     }
 
-    button, .button {
-        margin-right: 0;
-        display: block;
-        text-align: center;
+    .todoDescription {
+        display: flex;
+        flex: 1 100%;
     }
 
-    div .todoStatus {
+    .todoStatus {
+        display: flex;
+        flex: 1 100%;
+    }
+
+    div .todoStatus p {
         display: inline-flex;
+        flex: 1 10%;
+        margin-top: 0;
+        margin-bottom: 0.5em;
     }
 
     div .todoStatus input {
-        align-items: left;
+        display: inline-flex;
+        flex: 1 10%;
+        margin-left: 0;
+        padding-left: 0;
     }
 
-    div .todoStatus > * {
-        flex: 1 30%;
-        margin: 0;
+    div .todoStatus date {
         display: inline-flex;
+        flex: 1 100%;
+        align-content: right;
     }
+
+    .options {
+        display: flex;
+        flex: 1 100%;
+    }
+
+    .options a {
+        display: flex;
+        flex: 1 100%;
+    }
+
+    .buttoncontainer {
+        display: inline-flex;
+        flex-flow: row wrap;
+        flex: 1 100%;
+    }
+
+    .buttoncontainer button {
+        display: flex;
+        flex: 1 100%;
+    }
+
+    .buttoncontainer a {
+        display: inline-block;
+        flex: 1 100%;
+        align-content: center;
+    }
+    /*End Article ***********************/
 }
 
 /* END Layout for the todoList*/
